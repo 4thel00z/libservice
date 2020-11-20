@@ -2,8 +2,8 @@ package libservice
 
 import (
 	"fmt"
+	"github.com/4thel00z/libhttp"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/monzo/typhon"
 	"log"
 	"strings"
 )
@@ -16,7 +16,7 @@ type App struct {
 	Addr    string            `json:"addr"`
 	Config  Config            `json:"config"`
 	Modules map[string]Module `json:"modules"`
-	Router  *typhon.Router
+	Router  *libhttp.Router
 	Debug   bool
 	Verbose bool
 }
@@ -36,7 +36,7 @@ func NewApp(addr string, config Config, verbose, debug bool, modules ...Module) 
 		Verbose: verbose,
 	}
 
-	router := &typhon.Router{}
+	router := &libhttp.Router{}
 
 	for _, module := range modules {
 		for _, route := range module.Routes() {

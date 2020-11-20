@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/4thel00z/libhttp"
 	"github.com/iancoleman/strcase"
 	"github.com/mitchellh/mapstructure"
 	"io/ioutil"
@@ -14,7 +15,6 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/monzo/typhon"
 	"gopkg.in/dealancer/validate.v2"
 )
 
@@ -22,8 +22,8 @@ const (
 	multipartTag = "multipart"
 )
 
-func Default404Handler(app App) typhon.Service {
-	return func(req typhon.Request) typhon.Response {
+func Default404Handler(app App) libhttp.Service {
+	return func(req libhttp.Request) libhttp.Response {
 		// TODO: Change this body to a default 404 page
 		response := req.Response(nil)
 		response.StatusCode = 404
@@ -35,7 +35,7 @@ func GenerateJSONValidator(i interface{}) *Validator {
 	t := reflect.TypeOf(i)
 	toValidate := reflect.New(t).Interface()
 
-	validator := func(r typhon.Request) (interface{}, error) {
+	validator := func(r libhttp.Request) (interface{}, error) {
 
 		content, err := ioutil.ReadAll(r.Body)
 		if err != nil {
@@ -81,7 +81,7 @@ func GenerateMultipartValidator(i interface{}, maxMemoryBytes int64) *Validator 
 	t := reflect.TypeOf(i)
 	toValidate := reflect.New(t).Interface()
 
-	validator := func(r typhon.Request) (interface{}, error) {
+	validator := func(r libhttp.Request) (interface{}, error) {
 		err := r.ParseMultipartForm(maxMemoryBytes)
 
 		if err != nil {

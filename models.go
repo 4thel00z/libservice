@@ -2,7 +2,7 @@ package libservice
 
 import (
 	"encoding/json"
-	"github.com/monzo/typhon"
+	"github.com/4thel00z/libhttp"
 	"gopkg.in/dealancer/validate.v2"
 	"io/ioutil"
 	"os"
@@ -43,9 +43,9 @@ type Config struct {
 	//TODO: add more fields here if you want to make the app more configurable
 }
 
-type Service func(app App) typhon.Service
-type Validator func(request typhon.Request) (interface{}, error)
-type ValidatorWithService typhon.Filter
+type Service func(app App) libhttp.Service
+type Validator func(request libhttp.Request) (interface{}, error)
+type ValidatorWithService libhttp.Filter
 
 type Route struct {
 	Path               string               `json:"-"`
