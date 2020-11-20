@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"github.com/4thel00z/libservice"
+	"github.com/4thel00z/libservice/v1"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/proullon/ramsql/driver"
 	"github.com/stretchr/testify/assert"
@@ -11,7 +11,7 @@ import (
 
 // This is just an example entity, and shows you how you would create one yourself
 type Mango struct {
-	*libservice.DefaultEntity
+	*v1.DefaultEntity
 	Color string `name:"color" sql:"VARCHAR(32)"`
 }
 
@@ -30,7 +30,7 @@ func (m Mango) Value(key string) (interface{}, error) {
 	case "color":
 		return m.Color, nil
 	}
-	return nil, libservice.FieldNotFound
+	return nil, v1.FieldNotFound
 }
 
 func TestSave(t *testing.T) {
@@ -43,7 +43,7 @@ func TestSave(t *testing.T) {
 	}
 	err = repository.CreateTable(mango, true)
 	assert.Nil(t, err)
-	mango.DefaultEntity = &libservice.DefaultEntity{}
+	mango.DefaultEntity = &v1.DefaultEntity{}
 	err = repository.Save(mango)
 	assert.Nil(t, err)
 }

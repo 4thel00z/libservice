@@ -1,6 +1,6 @@
 // +build linux
 
-package libservice
+package v1
 
 import (
 	"fmt"

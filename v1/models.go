@@ -1,4 +1,4 @@
-package libservice
+package v1
 
 import (
 	"encoding/json"
