@@ -1,5 +1,6 @@
 # libservice
 
+![libservice-tests](https://github.com/4thel00z/libservice/workflows/Test/badge.svg)
 ![libservice-logo](https://github.com/4thel00z/libservice/raw/assets/libservice.png)
 
 The core of the `service_templated` boilerplate extracted here to comply with the DRY principle.
