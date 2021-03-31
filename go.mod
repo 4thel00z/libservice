@@ -3,7 +3,7 @@ module github.com/4thel00z/libservice
 go 1.15
 
 require (
-	github.com/4thel00z/libhttp v0.0.0-20201116005417-2f4b853fe689
+	github.com/4thel00z/libhttp v1.2.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/fortytw2/leaktest v1.3.0 // indirect
 	github.com/google/uuid v1.1.2
